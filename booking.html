@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking — SWARATTIVE Photography</title>
+  <meta name="description" content="Pesan sesi fotografi profesional dengan SWARATTIVE Photography.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo">SWARAT<span>TIVE</span></a>
+      <div class="navbar__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="service.html">Service</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="check-booking.html">Cek Booking</a>
+        <a href="booking.html" class="navbar__cta active">Booking</a>
+      </div>
+      <button class="navbar__hamburger" id="hamburger"
+        aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-banner">
+    <div class="page-banner__bg"><img src="images/photo.png" alt="Booking"></div>
+    <div class="page-banner__overlay"></div>
+    <div class="page-banner__content">
+      <h1>Reservasi Jadwal</h1>
+      <p>Potongan dan gaya premium, hanya dengan beberapa klik.</p>
+    </div>
+  </div>
+
+  <section class="section booking-page">
+    <div class="container">
+
+      <!-- Stepper -->
+      <div class="wizard-stepper">
+        <div class="wizard-progress-bar" id="wizProgress"></div>
+        <div class="step-item active" data-step="1">
+          <div class="step-dot"></div>
+          <div class="step-label">LAYANAN</div>
+        </div>
+        <div class="step-item" data-step="2">
+          <div class="step-dot"></div>
+          <div class="step-label">PHOTOGRAPHER</div>
+        </div>
+        <div class="step-item" data-step="3">
+          <div class="step-dot"></div>
+          <div class="step-label">WAKTU</div>
+        </div>
+        <div class="step-item" data-step="4">
+          <div class="step-dot"></div>
+          <div class="step-label">DATA DIRI</div>
+        </div>
+        <div class="step-item" data-step="5">
+          <div class="step-dot"></div>
+          <div class="step-label">PEMBAYARAN</div>
+        </div>
+        <div class="step-item" data-step="6">
+          <div class="step-dot"></div>
+          <div class="step-label">SELESAI</div>
+        </div>
+      </div>
+
+      <div class="booking-wizard-layout">
+
+        <!-- Left: Wizard Steps -->
+        <div class="wizard-container">
+          <form id="bookingForm">
+
+            <!-- Step 1: Layanan -->
+            <div class="wizard-step-content active" id="step1">
+              <h2>Pilih Layanan</h2>
+              <div class="selection-grid" id="servicesGrid">
+                <!-- Injected via site-data.js -->
+              </div>
+            </div>
+
+            <!-- Step 2: Photographer / Barber -->
+            <div class="wizard-step-content" id="step2">
+              <h2>Pilih Photographer</h2>
+              <div class="selection-grid" id="teamGrid">
+                <!-- Injected via site-data.js -->
+              </div>
+            </div>
+
+            <!-- Step 3: Waktu -->
+            <div class="wizard-step-content" id="step3">
+              <h2>Tanggal & Waktu</h2>
+              <div class="wizard-form-group">
+                <label>Pilih Tanggal</label>
+                <input type="date" id="bookDate" class="wizard-input" required>
+              </div>
+              <div class="wizard-form-group">
+                <label>Jadwal Tersedia</label>
+                <div class="time-slots" id="timeSlots">
+                  <!-- Injected via JS -->
+                  <div class="time-slot" data-time="09:00">09:00</div>
+                  <div class="time-slot" data-time="10:00">10:00</div>
+                  <div class="time-slot" data-time="11:00">11:00</div>
+                  <div class="time-slot" data-time="12:00">12:00</div>
+                  <div class="time-slot" data-time="13:00">13:00</div>
+                  <div class="time-slot" data-time="14:00">14:00</div>
+                  <div class="time-slot" data-time="15:00">15:00</div>
+                  <div class="time-slot" data-time="16:00">16:00</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Data Diri -->
+            <div class="wizard-step-content" id="step4">
+              <h2>Informasi Anda</h2>
+              <div class="wizard-form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="bookName" class="wizard-input" placeholder="Masukkan nama lengkap" required>
+              </div>
+              <div class="wizard-form-group">
+                <label>Nomor Telepon</label>
+                <input type="tel" id="bookPhone" class="wizard-input" placeholder="08xxxxxxxxxx" required>
+              </div>
+              <div class="wizard-form-group">
+                <label>Email (Opsional)</label>
+                <input type="email" id="bookEmail" class="wizard-input" placeholder="you@example.com">
+              </div>
+              <div class="wizard-form-group">
+                <label>Catatan (Opsional)</label>
+                <textarea id="bookMessage" class="wizard-input" style="height:100px;"
+                  placeholder="Ada pesan khusus?"></textarea>
+              </div>
+            </div>
+
+            <!-- Step 5: Pembayaran -->
+            <div class="wizard-step-content" id="step5">
+              <h2>Metode Pembayaran</h2>
+              <p>Pilih metode pembayaran yang tersedia:</p>
+              <div class="payment-grid" id="paymentsGrid">
+                <!-- Injected via site-data.js -->
+              </div>
+
+              <div class="proof-upload" id="proofDropzone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Silakan upload screenshot bukti transfer Anda.</p>
+                <input type="file" id="bookProof" accept="image/*" style="display:none;">
+                <button type="button" class="btn btn--outline" style="margin-top:10px;"
+                  onclick="document.getElementById('bookProof').click()">Jelajahi</button>
+                <div class="proof-preview-container" id="proofPreviewContainer">
+                  <img src="" alt="Proof" class="proof-preview" id="proofPreview">
+                  <button type="button" class="remove-proof" id="removeProof">✕</button>
+                  <p style="margin-top:10px; color:var(--color-wiz-green); font-weight:600;">File terpilih!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6: Selesai -->
+            <div class="wizard-step-content" id="step6" style="text-align:center;">
+              <div style="font-size: 4rem; color:var(--color-wiz-green); margin-bottom:20px;">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <h2>Booking Berhasil!</h2>
+              <p>Terima kasih telah melakukan reservasi. Tim kami akan segera memverifikasi bukti pembayaran Anda.</p>
+              <div style="margin-top:30px;">
+                <a href="index.html" class="btn btn--primary">Kembali ke Home</a>
+                <a href="check-booking.html" class="btn btn--outline">Cek Status Booking</a>
+              </div>
+            </div>
+
+            <!-- Wizard Navigation -->
+            <div class="wizard-nav" id="wizNav">
+              <button type="button" class="btn btn--wiz-back" id="prevBtn" onclick="changeStep(-1)"
+                style="display:none;">← Kembali</button>
+              <button type="button" class="btn btn--wiz-next" id="nextBtn" onclick="changeStep(1)"
+                style="margin-left:auto;">Lanjut →</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right: Sticky Summary -->
+        <aside class="booking-summary-sticky">
+          <div class="summary-header">
+            <i class="fas fa-shopping-basket"></i>
+            <h3>Ringkasan Booking</h3>
+          </div>
+          <div class="summary-content">
+            <div class="summary-row">
+              <span class="summary-label">Layanan</span>
+              <span class="summary-value" id="sumService">Belum dipilih</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Photographer</span>
+              <span class="summary-value" id="sumTeam">Belum dipilih</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Sesi</span>
+              <span class="summary-value" id="sumDateTime">Belum dipilih</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row summary-total">
+              <span class="summary-label">Total Harga</span>
+              <span class="summary-value" id="sumTotal">Rp 0</span>
+            </div>
+            <div class="summary-row summary-dp">
+              <span class="summary-label">DP Diperlukan (50%)</span>
+              <span class="summary-value" id="sumDP">Rp 0</span>
+            </div>
+          </div>
+          <div class="summary-footer">
+            <p>Butuh bantuan? <a href="contact.html">Hubungi Admin</a></p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">SWARAT<span>TIVE</span></div>
+          <p class="footer__desc">Mengabadikan setiap momen berharga.</p>
+          <div class="footer__social"><a href="#">IG</a><a href="#">FB</a><a href="#">YT</a></div>
+        </div>
+        <div>
+          <h4>Sitemap</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="booking.html">Booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><span>📧</span><span>hello@swarattive.com</span></li>
+            <li><span>📞</span><span>+62 812 3456 7890</span></li>
+            <li><span>📍</span><span>Jakarta, Indonesia</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 SWARATTIVE Photography. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Manual Repair if grid is empty
+    setTimeout(() => {
+      const grids = ['servicesGrid', 'teamGrid', 'paymentsGrid'];
+      grids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.children.length === 0) {
+          console.warn('Grid ' + id + ' is empty. Attempting force-render...');
+          if (typeof applyBookingData === 'function') applyBookingData();
+        }
+      });
+    }, 1000);
+  </script>
+</body>
+
+</html>

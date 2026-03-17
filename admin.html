@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — SWARATTIVE</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body class="admin-body">
+
+  <!-- LOGIN OVERLAY -->
+  <div class="admin-login-overlay" id="loginOverlay">
+    <div class="admin-login-card">
+      <div class="login-logo">SWARAT<span>TIVE</span></div>
+      <p class="login-subtitle">ADMIN DASHBOARD</p>
+      <input type="password" id="loginPassword" placeholder="Enter password..." autofocus>
+      <button class="login-btn" id="loginBtn">Login</button>
+      <p class="login-error" id="loginError">Password salah! Coba lagi.</p>
+    </div>
+  </div>
+
+  <!-- MOBILE TOGGLE -->
+  <button class="admin-mobile-toggle" id="mobileToggle">☰</button>
+
+  <!-- DASHBOARD LAYOUT -->
+  <div class="admin-layout" id="adminLayout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-sidebar__brand">
+        SWARAT<span>TIVE</span>
+        <small>Admin Panel</small>
+      </div>
+      <nav class="admin-sidebar__nav">
+        <a href="#" class="active" data-section="overview"><span class="nav-icon">📊</span> Overview</a>
+        <a href="#" data-section="home"><span class="nav-icon">🏠</span> Home</a>
+        <a href="#" data-section="portfolio"><span class="nav-icon">🖼️</span> Portfolio</a>
+        <a href="#" data-section="service"><span class="nav-icon">📦</span> Service</a>
+        <a href="#" data-section="about"><span class="nav-icon">👤</span> About</a>
+        <a href="#" data-section="blog"><span class="nav-icon">📝</span> Blog</a>
+        <a href="#" data-section="contact"><span class="nav-icon">📞</span> Contact</a>
+        <a href="#" data-section="booking"><span class="nav-icon">📅</span> Booking Options</a>
+        <a href="#" data-section="databooking"><span class="nav-icon">🛎️</span> Data Booking</a>
+        <a href="#" data-section="footer"><span class="nav-icon">🔗</span> Footer</a>
+      </nav>
+      <div class="admin-sidebar__theme" id="themeSwitcher">
+        <button class="theme-btn active" data-theme-value="system" title="System Auto">💻</button>
+        <button class="theme-btn" data-theme-value="light" title="Light Mode">☀️</button>
+        <button class="theme-btn" data-theme-value="dark" title="Dark Mode">🌙</button>
+      </div>
+      <div class="admin-sidebar__footer">
+        <a href="index.html" target="_blank"><span>🌐</span> Lihat Website</a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+      <!-- ========== OVERVIEW ========== -->
+      <div class="admin-section active" id="section-overview">
+        <div class="overview-top-header">
+          <h1>Dasbor</h1>
+        </div>
+
+        <div class="overview-grid">
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Total Pendapatan</div>
+            <div class="stat-card-new__value" id="ov-revenue">IDR 0</div>
+            <div class="stat-card-new__footer stat-footer-green">
+              Total pendapatan dari booking selesai 💵
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Total Booking</div>
+            <div class="stat-card-new__value" id="ov-total">0</div>
+            <div class="stat-card-new__footer stat-footer-orange">
+              Semua booking 📅
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Menunggu Pembayaran</div>
+            <div class="stat-card-new__value" id="ov-payment">0</div>
+            <div class="stat-card-new__footer stat-footer-orange">
+              Menunggu pembayaran customer 🕒
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Menunggu Verifikasi</div>
+            <div class="stat-card-new__value" id="ov-verify">0</div>
+            <div class="stat-card-new__footer stat-footer-orange">
+              Menunggu verifikasi admin 🔍
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Terkonfirmasi</div>
+            <div class="stat-card-new__value" id="ov-confirmed">0</div>
+            <div class="stat-card-new__footer stat-footer-blue">
+              Booking siap dikerjakan 💙
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Selesai</div>
+            <div class="stat-card-new__value" id="ov-completed">0</div>
+            <div class="stat-card-new__footer stat-footer-green">
+              Layanan telah selesai ✅
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Ditolak</div>
+            <div class="stat-card-new__value" id="ov-rejected">0</div>
+            <div class="stat-card-new__footer stat-footer-red">
+              Booking ditolak ❌
+            </div>
+          </div>
+          <div class="stat-card-new">
+            <div class="stat-card-new__title">Kadaluarsa</div>
+            <div class="stat-card-new__value" id="ov-expired">0</div>
+            <div class="stat-card-new__footer stat-footer-red">
+              Booking expired 🗑️
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-section">
+          <h3>Grafik Booking Bulanan</h3>
+          <canvas id="bookingChart" height="100"></canvas>
+        </div>
+
+        <div class="latest-bookings-section">
+          <h3>Latest Bookings</h3>
+          <div class="admin-table-container">
+            <table class="admin-table" id="latest-bookings-table">
+              <thead>
+                <tr>
+                  <th>Kode</th>
+                  <th>Pelanggan</th>
+                  <th>Layanan</th>
+                  <th>Tanggal</th>
+                  <th>Status</th>
+                  <th>Harga</th>
+                </tr>
+              </thead>
+              <tbody id="latest-bookings-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== HOME ========== -->
+      <div class="admin-section" id="section-home">
+        <div class="admin-main__header">
+          <h1>🏠 Home Page</h1>
+          <p>Edit konten halaman utama website</p>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎬</span> Hero Section</div>
+          <div class="admin-form-group">
+            <label>Hero Title (baris 1)</label>
+            <input type="text" id="home-hero-title1" placeholder="Welcome to">
+          </div>
+          <div class="admin-form-group">
+            <label>Hero Title (baris 2)</label>
+            <input type="text" id="home-hero-title2" placeholder="Swarattive">
+          </div>
+          <div class="admin-form-group">
+            <label>Hero Title (baris 3)</label>
+            <input type="text" id="home-hero-title3" placeholder="Photography">
+          </div>
+          <div class="admin-form-group">
+            <label>Hero Subtitle</label>
+            <textarea id="home-hero-subtitle" placeholder="Mengabadikan momen terindah..."></textarea>
+          </div>
+          <div class="admin-form-group">
+            <label>Hero Background Image URL</label>
+            <div class="admin-image-upload">
+              <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+              <div class="admin-image-dropzone">
+                <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                <input type="file" accept="image/*" class="admin-image-file">
+                <input type="hidden" id="home-hero-bg" value="images/photo.png">
+              </div>
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label>Hero Button Text</label>
+            <input type="text" id="home-hero-btn" placeholder="Book Session">
+          </div>
+        </div>
+
+        <!-- Featured Sessions -->
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">⭐</span> Featured Sessions</div>
+          <div class="admin-form-group">
+            <label>Section Title</label>
+            <input type="text" id="home-featured-title" placeholder="Featured Sessions">
+          </div>
+          <div class="admin-form-group">
+            <label>Section Subtitle</label>
+            <input type="text" id="home-featured-subtitle" placeholder="Pilihan sesi foto terbaik...">
+          </div>
+          <div id="home-featured-items"></div>
+          <button class="admin-btn admin-btn--add" onclick="addFeaturedItem()">+ Tambah Featured Item</button>
+        </div>
+
+        <!-- Latest Blog -->
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📰</span> Latest Blog (Home)</div>
+          <div class="admin-form-group">
+            <label>Blog Image URL</label>
+            <div class="admin-image-upload">
+              <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+              <div class="admin-image-dropzone">
+                <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                <input type="file" accept="image/*" class="admin-image-file">
+                <input type="hidden" id="home-blog-img" value="images/photo.png">
+              </div>
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label>Blog Title</label>
+            <input type="text" id="home-blog-title" placeholder="5 Tips for Pre-Wedding Shoots">
+          </div>
+          <div class="admin-form-group">
+            <label>Blog Excerpt</label>
+            <textarea id="home-blog-excerpt" placeholder="Dapatkan hasil foto..."></textarea>
+          </div>
+        </div>
+
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('home')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== PORTFOLIO ========== -->
+      <div class="admin-section" id="section-portfolio">
+        <div class="admin-main__header">
+          <h1>🖼️ Portfolio</h1>
+          <p>Kelola item gallery portfolio</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎨</span> Page Banner</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Banner Title</label>
+              <input type="text" id="portfolio-banner-title" placeholder="Portfolio">
+            </div>
+            <div class="admin-form-group">
+              <label>Banner Subtitle</label>
+              <input type="text" id="portfolio-banner-subtitle" placeholder="Koleksi karya terbaik kami">
+            </div>
+            <div class="admin-form-group" style="grid-column: span 2;">
+              <label>Banner Background Image URL</label>
+              <div class="admin-image-upload">
+                <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+                <div class="admin-image-dropzone">
+                  <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                  <input type="file" accept="image/*" class="admin-image-file">
+                  <input type="hidden" id="portfolio-banner-bg" value="images/photo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🖼️</span> Gallery Items</div>
+          <div id="portfolio-items"></div>
+          <button class="admin-btn admin-btn--add" onclick="addPortfolioItem()">+ Tambah Portfolio Item</button>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('portfolio')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== SERVICE ========== -->
+      <div class="admin-section" id="section-service">
+        <div class="admin-main__header">
+          <h1>📦 Service</h1>
+          <p>Edit paket layanan dan add-ons</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎨</span> Page Banner</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Banner Title</label>
+              <input type="text" id="service-banner-title" placeholder="Service">
+            </div>
+            <div class="admin-form-group">
+              <label>Banner Subtitle</label>
+              <input type="text" id="service-banner-subtitle" placeholder="Paket fotografi profesional...">
+            </div>
+            <div class="admin-form-group" style="grid-column: span 2;">
+              <label>Banner Background Image URL</label>
+              <div class="admin-image-upload">
+                <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+                <div class="admin-image-dropzone">
+                  <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                  <input type="file" accept="image/*" class="admin-image-file">
+                  <input type="hidden" id="service-banner-bg" value="images/photo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📦</span> Packages</div>
+          <div id="service-packages"></div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">➕</span> Add-Ons</div>
+          <div id="service-addons"></div>
+          <button class="admin-btn admin-btn--add" onclick="addAddon()">+ Tambah Add-On</button>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('service')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== ABOUT ========== -->
+      <div class="admin-section" id="section-about">
+        <div class="admin-main__header">
+          <h1>👤 About</h1>
+          <p>Edit halaman tentang kami</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎨</span> Page Banner</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Banner Title</label>
+              <input type="text" id="about-banner-title" placeholder="About Us">
+            </div>
+            <div class="admin-form-group">
+              <label>Banner Subtitle</label>
+              <input type="text" id="about-banner-subtitle" placeholder="Kisah di balik lensa kami">
+            </div>
+            <div class="admin-form-group" style="grid-column: span 2;">
+              <label>Banner Background Image URL</label>
+              <div class="admin-image-upload">
+                <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+                <div class="admin-image-dropzone">
+                  <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                  <input type="file" accept="image/*" class="admin-image-file">
+                  <input type="hidden" id="about-banner-bg" value="images/photo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📖</span> Our Story</div>
+          <div class="admin-form-group">
+            <label>Story Image URL</label>
+            <div class="admin-image-upload">
+              <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+              <div class="admin-image-dropzone">
+                <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                <input type="file" accept="image/*" class="admin-image-file">
+                <input type="hidden" id="about-story-img" value="images/photo.png">
+              </div>
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label>Story Title</label>
+            <input type="text" id="about-story-title" placeholder="Our Story">
+          </div>
+          <div class="admin-form-group">
+            <label>Paragraf 1</label>
+            <textarea id="about-story-p1" placeholder="SWARATTIVE Photography lahir..."></textarea>
+          </div>
+          <div class="admin-form-group">
+            <label>Paragraf 2</label>
+            <textarea id="about-story-p2" placeholder="Dengan pengalaman lebih..."></textarea>
+          </div>
+          <div class="admin-form-group">
+            <label>Paragraf 3</label>
+            <textarea id="about-story-p3" placeholder="Filosofi kami sederhana..."></textarea>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎬</span> Behind The Scenes</div>
+          <div id="about-bts-items"></div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">👥</span> Team Members</div>
+          <div id="about-team-items"></div>
+          <button class="admin-btn admin-btn--add" onclick="addTeamMember()">+ Tambah Team Member</button>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('about')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== BLOG ========== -->
+      <div class="admin-section" id="section-blog">
+        <div class="admin-main__header">
+          <h1>📝 Blog</h1>
+          <p>Kelola artikel blog</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎨</span> Page Banner</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Banner Title</label>
+              <input type="text" id="blog-banner-title" placeholder="Blog">
+            </div>
+            <div class="admin-form-group">
+              <label>Banner Subtitle</label>
+              <input type="text" id="blog-banner-subtitle" placeholder="Tips, inspirasi, dan cerita...">
+            </div>
+            <div class="admin-form-group" style="grid-column: span 2;">
+              <label>Banner Background Image URL</label>
+              <div class="admin-image-upload">
+                <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+                <div class="admin-image-dropzone">
+                  <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                  <input type="file" accept="image/*" class="admin-image-file">
+                  <input type="hidden" id="blog-banner-bg" value="images/photo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📝</span> Blog Posts</div>
+          <div id="blog-items"></div>
+          <button class="admin-btn admin-btn--add" onclick="addBlogPost()">+ Tambah Blog Post</button>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('blog')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== CONTACT ========== -->
+      <div class="admin-section" id="section-contact">
+        <div class="admin-main__header">
+          <h1>📞 Contact</h1>
+          <p>Edit informasi kontak</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎨</span> Page Banner</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Banner Title</label>
+              <input type="text" id="contact-banner-title" placeholder="Contact">
+            </div>
+            <div class="admin-form-group">
+              <label>Banner Subtitle</label>
+              <input type="text" id="contact-banner-subtitle" placeholder="Hubungi kami untuk konsultasi">
+            </div>
+            <div class="admin-form-group" style="grid-column: span 2;">
+              <label>Banner Background Image URL</label>
+              <div class="admin-image-upload">
+                <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+                <div class="admin-image-dropzone">
+                  <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                  <input type="file" accept="image/*" class="admin-image-file">
+                  <input type="hidden" id="contact-banner-bg" value="images/photo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📍</span> Contact Info</div>
+          <div class="admin-form-group">
+            <label>Alamat</label>
+            <input type="text" id="contact-address" placeholder="Jl. Sudirman No. 123...">
+          </div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Telepon</label>
+              <input type="text" id="contact-phone" placeholder="+62 812 3456 7890">
+            </div>
+            <div class="admin-form-group">
+              <label>Email</label>
+              <input type="text" id="contact-email" placeholder="hello@swarattive.com">
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label>Jam Operasional</label>
+            <input type="text" id="contact-hours" placeholder="Senin - Sabtu: 09:00 - 18:00">
+          </div>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('contact')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== BOOKING ========== -->
+      <div class="admin-section" id="section-booking">
+        <div class="admin-main__header">
+          <h1>📅 Booking</h1>
+          <p>Edit opsi booking form</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🎨</span> Page Banner</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Banner Title</label>
+              <input type="text" id="booking-banner-title" placeholder="Booking">
+            </div>
+            <div class="admin-form-group">
+              <label>Banner Subtitle</label>
+              <input type="text" id="booking-banner-subtitle" placeholder="Pesan sesi fotografi impian...">
+            </div>
+            <div class="admin-form-group" style="grid-column: span 2;">
+              <label>Banner Background Image URL</label>
+              <div class="admin-image-upload">
+                <img class="admin-image-preview" src="images/photo.png" alt="Preview">
+                <div class="admin-image-dropzone">
+                  <span>Seret & Jatuhkan berkas atau <strong>Jelajahi</strong></span>
+                  <input type="file" accept="image/*" class="admin-image-file">
+                  <input type="hidden" id="booking-banner-bg" value="images/photo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📋</span> Service Options</div>
+          <div id="booking-services"></div>
+          <button class="admin-btn admin-btn--add" onclick="addBookingService()">+ Tambah Service Option</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📍</span> Location Options</div>
+          <div id="booking-locations"></div>
+          <button class="admin-btn admin-btn--add" onclick="addBookingLocation()">+ Tambah Location Option</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📦</span> Package Options</div>
+          <div id="booking-packages"></div>
+          <button class="admin-btn admin-btn--add" onclick="addBookingPackage()">+ Tambah Package Option</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">💳</span> Payment Methods</div>
+          <div id="booking-payments"></div>
+          <button class="admin-btn admin-btn--add" onclick="addBookingPayment()">+ Tambah Payment Method</button>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('booking')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- ========== DATA BOOKING ========== -->
+      <div class="admin-section" id="section-databooking">
+        <div class="admin-main__header">
+          <h1>🛎️ Data Booking</h1>
+          <p>Pantau pesanan masuk dan atur status booking klien</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📋</span> Daftar Pemesanan</div>
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Nama & Email</th>
+                  <th>Layanan & Paket</th>
+                  <th>Tanggal Sesi</th>
+                  <th>Estimasi Selesai</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="data-booking-tbody">
+                <!-- Data injected here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== FOOTER ========== -->
+      <div class="admin-section" id="section-footer">
+        <div class="admin-main__header">
+          <h1>🔗 Footer</h1>
+          <p>Edit konten footer global</p>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📝</span> Footer Info</div>
+          <div class="admin-form-group">
+            <label>Footer Description</label>
+            <textarea id="footer-description" placeholder="Swarattive Photography — Mengabadikan..."></textarea>
+          </div>
+          <div class="admin-form-group">
+            <label>Copyright Text</label>
+            <input type="text" id="footer-copyright" placeholder="© 2026 SWARATTIVE Photography...">
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">🌐</span> Social Media Links</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Instagram URL</label>
+              <input type="text" id="footer-ig" placeholder="https://instagram.com/...">
+            </div>
+            <div class="admin-form-group">
+              <label>Facebook URL</label>
+              <input type="text" id="footer-fb" placeholder="https://facebook.com/...">
+            </div>
+          </div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>YouTube URL</label>
+              <input type="text" id="footer-yt" placeholder="https://youtube.com/...">
+            </div>
+            <div class="admin-form-group">
+              <label>TikTok URL</label>
+              <input type="text" id="footer-tk" placeholder="https://tiktok.com/...">
+            </div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title"><span class="card-icon">📧</span> Footer Contact</div>
+          <div class="admin-form-row">
+            <div class="admin-form-group">
+              <label>Email</label>
+              <input type="text" id="footer-email" placeholder="hello@swarattive.com">
+            </div>
+            <div class="admin-form-group">
+              <label>Phone</label>
+              <input type="text" id="footer-phone" placeholder="+62 812 3456 7890">
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label>Location</label>
+            <input type="text" id="footer-location" placeholder="Jakarta, Indonesia">
+          </div>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn--save" onclick="saveSection('footer')">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- TOAST -->
+  <div class="admin-toast" id="adminToast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cek Booking — SWARATTIVE Photography</title>
+  <meta name="description" content="Cek status booking fotografi Anda di SWARATTIVE Photography.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo">SWARAT<span>TIVE</span></a>
+      <div class="navbar__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="service.html">Service</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="check-booking.html" class="active">Cek Booking</a>
+        <a href="booking.html" class="navbar__cta">Booking</a>
+      </div>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner">
+    <div class="page-banner__bg"><img src="images/photo.png" alt="Check Booking"></div>
+    <div class="page-banner__overlay"></div>
+    <div class="page-banner__content">
+      <h1>Check Booking</h1>
+      <p>Cek status pemesanan Anda</p>
+    </div>
+  </div>
+
+  <!-- CHECK BOOKING -->
+  <section class="section check-booking-page">
+    <div class="container">
+      <div class="section-title">
+        <h2>Check Your Booking Status</h2>
+        <p>Masukkan Booking ID atau Email untuk melihat status pemesanan Anda.</p>
+        <div class="divider"></div>
+      </div>
+
+      <div class="check-booking__search">
+        <div class="check-booking__input-group">
+          <input type="text" id="bookingSearchInput" placeholder="Enter Booking ID or Email...">
+          <button class="btn btn--primary" id="checkBookingBtn">Check Status</button>
+        </div>
+      </div>
+
+      <!-- Status Tracker (shown after search) -->
+      <div class="status-tracker" id="statusTracker">
+        <div class="status-tracker__header">
+          <h3>Status Booking</h3>
+          <p>Booking ID: <strong id="bookingIdDisplay">SWR-2026-001</strong></p>
+        </div>
+
+        <div class="status-tracker__steps">
+          <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+          <div class="status-step completed" data-step="1">
+            <div class="status-step__circle">✓</div>
+            <div class="status-step__label">Booking Diterima</div>
+          </div>
+          <div class="status-step completed" data-step="2">
+            <div class="status-step__circle">✓</div>
+            <div class="status-step__label">Confirmed</div>
+          </div>
+          <div class="status-step completed" data-step="3">
+            <div class="status-step__circle">✓</div>
+            <div class="status-step__label">Photo Session</div>
+          </div>
+          <div class="status-step active" data-step="4">
+            <div class="status-step__circle">4</div>
+            <div class="status-step__label">Editing Process</div>
+          </div>
+          <div class="status-step" data-step="5">
+            <div class="status-step__circle">5</div>
+            <div class="status-step__label">Gallery Ready</div>
+          </div>
+          <div class="status-step" data-step="6">
+            <div class="status-step__circle">6</div>
+            <div class="status-step__label">Completed</div>
+          </div>
+        </div>
+
+        <div class="status-tracker__details">
+          <table>
+            <tr>
+              <td>Nama</td>
+              <td id="detailName">Ahmad Rizky</td>
+            </tr>
+            <tr>
+              <td>Paket</td>
+              <td id="detailPackage">The Collection</td>
+            </tr>
+            <tr>
+              <td>Tanggal Sesi</td>
+              <td id="detailDate">15 Maret 2026</td>
+            </tr>
+            <tr>
+              <td>Lokasi</td>
+              <td id="detailLocation">Taman Mini, Jakarta</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td id="detailStatus" style="color: var(--color-accent); font-weight: 600;">Editing Process</td>
+            </tr>
+            <tr>
+              <td>Estimasi Selesai</td>
+              <td id="detailEstimate">22 Maret 2026</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">SWARAT<span>TIVE</span></div>
+          <p class="footer__desc">Swarattive Photography — Mengabadikan setiap momen berharga dengan sentuhan seni yang
+            tak lekang oleh waktu.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="TikTok">TK</a>
+          </div>
+        </div>
+        <div>
+          <h4>Sitemap</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="booking.html">Booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><span>📧</span><span>hello@swarattive.com</span></li>
+            <li><span>📞</span><span>+62 812 3456 7890</span></li>
+            <li><span>📍</span><span>Jakarta, Indonesia</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 SWARATTIVE Photography. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

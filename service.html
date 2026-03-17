@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service — SWARATTIVE Photography</title>
+  <meta name="description" content="Paket layanan fotografi profesional dari SWARATTIVE Photography.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo">SWARAT<span>TIVE</span></a>
+      <div class="navbar__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="service.html" class="active">Service</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="check-booking.html">Cek Booking</a>
+        <a href="booking.html" class="navbar__cta">Booking</a>
+      </div>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner">
+    <div class="page-banner__bg"><img src="images/photo.png" alt="Service"></div>
+    <div class="page-banner__overlay"></div>
+    <div class="page-banner__content">
+      <h1>Service</h1>
+      <p>Paket fotografi profesional untuk setiap kebutuhan</p>
+    </div>
+  </div>
+
+  <!-- SERVICE -->
+  <section class="section service-page">
+    <div class="container">
+      <div class="service__header">
+        <div class="brand">SWARATTIVE</div>
+        <div class="tagline">Photography Studio</div>
+      </div>
+
+      <div class="section-title">
+        <h2>Our Packages</h2>
+        <p>Pilih paket yang sesuai dengan kebutuhanmu.</p>
+        <div class="divider"></div>
+      </div>
+
+      <div class="service__packages">
+        <!-- Package 1 -->
+        <div class="service__card animate-in">
+          <div class="service__card__icon">📷</div>
+          <h3>The Essentials</h3>
+          <p class="subtitle">Basic Photography & Couple</p>
+          <ul class="service__card__features">
+            <li>1 Hour Session</li>
+            <li>1 Location</li>
+            <li>20 Edited Photos</li>
+            <li>Online Gallery</li>
+          </ul>
+          <div class="price">Rp 2.5jt</div>
+          <p class="price-note">Starting price</p>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="service__card featured animate-in">
+          <div class="service__card__icon">🎞️</div>
+          <h3>The Collection</h3>
+          <p class="subtitle">Premium Photography & Video</p>
+          <ul class="service__card__features">
+            <li>3 Hours Session</li>
+            <li>2 Locations</li>
+            <li>50 Edited Photos</li>
+            <li>Highlight Video</li>
+            <li>Photo Album</li>
+          </ul>
+          <div class="price">Rp 7.5jt</div>
+          <p class="price-note">Most popular</p>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="service__card animate-in">
+          <div class="service__card__icon">✨</div>
+          <h3>The Prestige</h3>
+          <p class="subtitle">Commercial & Custom</p>
+          <ul class="service__card__features">
+            <li>Full Day Session</li>
+            <li>Unlimited Locations</li>
+            <li>All Edited Photos</li>
+            <li>Cinematic Video</li>
+            <li>Premium Album</li>
+            <li>Custom Framing</li>
+          </ul>
+          <div class="price">Rp 15jt+</div>
+          <p class="price-note">Fully customizable</p>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="service__extras animate-in">
+        <h3>Add-Ons</h3>
+        <ul class="service__extras__grid">
+          <li>Printed Photo Album</li>
+          <li>Extra Locations</li>
+          <li>Drone Footage</li>
+          <li>Same-Day Edit</li>
+          <li>Custom Framing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">SWARAT<span>TIVE</span></div>
+          <p class="footer__desc">Swarattive Photography — Mengabadikan setiap momen berharga dengan sentuhan seni yang
+            tak lekang oleh waktu.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="TikTok">TK</a>
+          </div>
+        </div>
+        <div>
+          <h4>Sitemap</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="booking.html">Booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><span>📧</span><span>hello@swarattive.com</span></li>
+            <li><span>📞</span><span>+62 812 3456 7890</span></li>
+            <li><span>📍</span><span>Jakarta, Indonesia</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 SWARATTIVE Photography. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

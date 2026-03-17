@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWARATTIVE — Photography Studio</title>
+  <meta name="description"
+    content="SWARATTIVE Photography — Capturing your most beautiful moments with timeless elegance.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar__logo">SWARAT<span>TIVE</span></a>
+      <div class="navbar__links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="service.html">Service</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="check-booking.html">Cek Booking</a>
+        <a href="booking.html" class="navbar__cta">Booking</a>
+      </div>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="images/photo.png" alt="SWARATTIVE Photography">
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1>Welcome to<br>Swarattive<br>Photography</h1>
+      <p>Mengabadikan momen terindah dalam hidup Anda dengan sentuhan seni dan keindahan abadi.</p>
+      <a href="booking.html" class="btn">Book Session</a>
+    </div>
+  </section>
+
+  <!-- FEATURED SESSIONS -->
+  <section class="section featured">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Sessions</h2>
+        <p>Pilihan sesi foto terbaik dari koleksi kami.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="featured__grid">
+        <div class="featured__card animate-in">
+          <img src="images/photo.png" alt="Prewedding">
+          <div class="featured__card__overlay">
+            <h4>Prewedding Session</h4>
+            <p>Romantic & Timeless</p>
+          </div>
+        </div>
+        <div class="featured__card animate-in">
+          <img src="images/photo.png" alt="Wedding">
+          <div class="featured__card__overlay">
+            <h4>Wedding Ceremony</h4>
+            <p>Elegant Documentation</p>
+          </div>
+        </div>
+        <div class="featured__card animate-in">
+          <img src="images/photo.png" alt="Portrait">
+          <div class="featured__card__overlay">
+            <h4>Portrait Photography</h4>
+            <p>Beauty & Confidence</p>
+          </div>
+        </div>
+        <div class="featured__card animate-in">
+          <img src="images/photo.png" alt="Commercial">
+          <div class="featured__card__overlay">
+            <h4>Commercial Shoot</h4>
+            <p>Professional Branding</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST BLOG -->
+  <section class="section latest-blog">
+    <div class="container">
+      <div class="section-title">
+        <h2>Latest Blog</h2>
+        <p>Tips dan inspirasi seputar fotografi.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="latest-blog__grid animate-in">
+        <div class="latest-blog__image">
+          <img src="images/photo.png" alt="Blog Post">
+        </div>
+        <div class="latest-blog__text">
+          <h3>5 Tips for Pre-Wedding Shoots</h3>
+          <p>Dapatkan hasil foto pre-wedding yang memukau dengan persiapan yang tepat. Dari pemilihan lokasi hingga
+            outfit yang cocok, semua dibahas lengkap di sini.</p>
+          <a href="blog.html" class="btn btn--outline">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">SWARAT<span>TIVE</span></div>
+          <p class="footer__desc">Swarattive Photography — Mengabadikan setiap momen berharga dengan sentuhan seni yang
+            tak lekang oleh waktu.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="TikTok">TK</a>
+          </div>
+        </div>
+        <div>
+          <h4>Sitemap</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="booking.html">Booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li><span>📧</span><span>hello@swarattive.com</span></li>
+            <li><span>📞</span><span>+62 812 3456 7890</span></li>
+            <li><span>📍</span><span>Jakarta, Indonesia</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 SWARATTIVE Photography. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
