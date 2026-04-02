@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Booking extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'booking_code',
+        'client_id',
+        'service_id',
+        'package_id',
+        'team_member_id',
+        'booking_date',
+        'booking_time',
+        'location_type',
+        'location_address',
+        'total_price',
+        'status',
+        'notes',
+        'confirmed_at',
+        'completed_at',
+    ];
+
+    protected $casts = [
+        'booking_date' => 'date',
+        'booking_time' => 'datetime:H:i:s',
+        'total_price' => 'decimal:2',
+        'confirmed_at' => 'datetime',
+        'completed_at' => 'datetime',
+    ];
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function package(): BelongsTo
+    {
+        return $this->belongsTo(ServicePackage::class);
+    }
+
+    public function teamMember(): BelongsTo
+    {
+        return $this->belongsTo(TeamMember::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function scopeByStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    public function scopeByDate($query, $date)
+    {
+        return $query->whereDate('booking_date', $date);
+    }
+
+    public function isConfirmed()
+    {
+        return $this->status === 'confirmed';
+    }
+
+    public function isCompleted()
+    {
+        return $this->status === 'completed';
+    }
+
+    public function isPending()
+    {
+        return $this->status === 'pending';
+    }
+}
